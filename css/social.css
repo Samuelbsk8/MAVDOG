@@ -1,0 +1,60 @@
+/* Footer social links use the existing MAVDOG palette and respect local theme edits. */
+.footer-social {
+  max-width: var(--page-width, 1240px);
+  margin: 0 auto 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--light-color, #f7f7f5);
+}
+.footer-social-title {
+  color: var(--light-green, #bfc077);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  margin-right: 12px;
+}
+.footer-social a {
+  display: inline-block;
+  padding: 7px 0;
+  border-bottom: 1px solid transparent;
+}
+.footer-social a:hover {
+  color: var(--light-green, #bfc077);
+  border-bottom-color: currentColor;
+}
+.footer-social a:focus-visible {
+  outline: 2px solid var(--light-green, #bfc077);
+  outline-offset: 5px;
+}
+@media (max-width: 480px) {
+  .footer-social { gap: 8px 22px; }
+  .footer-social-title { width: 100%; margin-right: 0; }
+}
+
+/* A light backing keeps the supplied transparent logos visible on charcoal. */
+.site-header .brand .business-logo,
+.site-footer .brand .business-logo {
+  background: var(--light-color, #f7f7f5);
+  border-radius: 4px;
+  object-fit: contain;
+  padding: 6px;
+  flex-shrink: 0;
+}
+.site-header .brand .business-logo {
+  width: 52px;
+  height: 52px;
+}
+.site-footer .brand .footer-business-logo {
+  width: 76px;
+  height: 76px;
+  padding: 8px;
+}
+@media (max-width: 480px) {
+  .site-header .brand .business-logo { width: 43px; height: 43px; }
+  .site-footer .brand .footer-business-logo { width: 58px; height: 58px; }
+}

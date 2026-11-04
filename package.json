@@ -1,0 +1,16 @@
+{
+  "name": "mavdog-k9-original-style",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MAVDOG K-9 editorial redesign using the original brand palette",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "preview": "node scripts/serve.mjs",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

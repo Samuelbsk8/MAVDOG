@@ -1,0 +1,3 @@
+Copy your original slideshow image files here, then run npm run build.
+The build automatically creates the JavaScript image list.
+Supported: PNG, JPG, JPEG, WebP, GIF, SVG.
