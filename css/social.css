@@ -58,3 +58,29 @@
   .site-header .brand .business-logo { width: 43px; height: 43px; }
   .site-footer .brand .footer-business-logo { width: 58px; height: 58px; }
 }
+
+/* Preserve the intended heading line breaks on phones and narrow tablets. */
+@media (max-width: 850px) {
+  .approach-copy h2 br,
+  .approach-copy h2 br:nth-child(2),
+  .work-intro h2 br,
+  .questions-section h2 br {
+    display: revert;
+  }
+}
+@media (max-width: 480px) {
+  /* Keep “Purposeful practice.” on one line at typical phone widths. */
+  .work-intro h2 { font-size: clamp(25px, 7.5vw, 36px); }
+}
+/* SVG icons inherit the surrounding text color without emoji rendering. */
+.direction-arrow {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  min-width: 1em;
+  vertical-align: -.1em;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+.program-bottom a .direction-arrow { width: 18px; height: 18px; }
+.caption-arrow .direction-arrow { width: 20px; height: 20px; }

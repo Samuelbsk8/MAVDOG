@@ -44,7 +44,7 @@
     if (headerLogo) {
       headerLogo.classList.add('business-logo');
       headerLogo.addEventListener('load', () => headerLogo.classList.remove('image-unavailable'));
-      const fallback = () => { if (headerLogo.src !== grayLogo) headerLogo.src = grayLogo; };
+      const fallback = () => { if (headerLogo.src !== mainLogo) headerLogo.src = mainLogo; };
       headerLogo.addEventListener('error', fallback, { once: true });
       if (headerLogo.complete && !headerLogo.naturalWidth) fallback();
     }
@@ -54,7 +54,7 @@
       logo.alt = '';
       logo.width = 76;
       logo.height = 76;
-      logo.loading = 'lazy';
+      logo.loading = 'eager';
       logo.addEventListener('load', () => logo.classList.remove('image-unavailable'));
       logo.addEventListener('error', () => { logo.src = mainLogo; }, { once: true });
       logo.src = grayLogo;
@@ -62,6 +62,45 @@
     });
   }
 
+
+  // Render diagonal arrows as vector icons, never as platform-dependent emoji.
+  function directionArrow() {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('class', 'direction-arrow');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('width', '16');
+    svg.setAttribute('height', '16');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    const path = document.createElementNS(ns, 'path');
+    path.setAttribute('d', 'M6 18 18 6M6 6h12v12');
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke', 'currentColor');
+    path.setAttribute('stroke-width', '1.8');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('stroke-linejoin', 'round');
+    svg.append(path);
+    return svg;
+  }
+  const arrowTextNodes = [];
+  const arrowWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  while (arrowWalker.nextNode()) {
+    const text = arrowWalker.currentNode;
+    if (text.nodeValue.includes('↗') &&
+        !text.parentElement?.closest('script,style,textarea,option,pre,code,svg')) {
+      arrowTextNodes.push(text);
+    }
+  }
+  for (const text of arrowTextNodes) {
+    const parts = text.nodeValue.split(/\u2197[\uFE0E\uFE0F]?/u);
+    const fragment = document.createDocumentFragment();
+    parts.forEach((part, index) => {
+      if (index) fragment.append(directionArrow());
+      if (part) fragment.append(document.createTextNode(part));
+    });
+    text.replaceWith(fragment);
+  }
 
   document.querySelectorAll('[data-year]').forEach(el=>el.textContent=String(new Date().getFullYear()));
   const $=s=>document.querySelector(s);
