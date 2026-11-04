@@ -36,32 +36,39 @@
   document.querySelectorAll('.social-row > div').forEach(row => {
     row.replaceChildren(...socialProfiles.map(socialAnchor));
   });
-  // Reuse the existing business logos rather than generating a new brand mark.
-  if (appScript) {
-    const mainLogo = new URL('../images/Main logo - no background.png', appScript.src).href;
-    const grayLogo = new URL('../images/Gray logo - no background.png', appScript.src).href;
-    const headerLogo = document.querySelector('.site-header .brand img');
-    if (headerLogo) {
-      headerLogo.classList.add('business-logo');
-      headerLogo.addEventListener('load', () => headerLogo.classList.remove('image-unavailable'));
-      const fallback = () => { if (headerLogo.src !== mainLogo) headerLogo.src = mainLogo; };
-      headerLogo.addEventListener('error', fallback, { once: true });
-      if (headerLogo.complete && !headerLogo.naturalWidth) fallback();
-    }
-    document.querySelectorAll('.footer-brand').forEach(brand => {
-      const logo = document.createElement('img');
-      logo.className = 'business-logo footer-business-logo';
-      logo.alt = '';
-      logo.width = 76;
-      logo.height = 76;
-      logo.loading = 'eager';
-      logo.addEventListener('load', () => logo.classList.remove('image-unavailable'));
-      logo.addEventListener('error', () => { logo.src = mainLogo; }, { once: true });
-      logo.src = grayLogo;
-      brand.prepend(logo);
+  
+ if (appScript) {
+  const whiteLogo = new URL(
+    '../images/White logo - no background.png',
+    appScript.src
+  ).href;
+
+  const headerLogo = document.querySelector('.site-header .brand img');
+
+  if (headerLogo) {
+    headerLogo.classList.add('business-logo');
+    headerLogo.addEventListener('load', () => {
+      headerLogo.classList.remove('image-unavailable');
     });
+    headerLogo.src = whiteLogo;
   }
 
+  document.querySelectorAll('.footer-brand').forEach(brand => {
+    const logo = document.createElement('img');
+    logo.className = 'business-logo footer-business-logo';
+    logo.alt = '';
+    logo.width = 110;
+    logo.height = 110;
+    logo.loading = 'eager';
+
+    logo.addEventListener('load', () => {
+      logo.classList.remove('image-unavailable');
+    });
+
+    logo.src = whiteLogo;
+    brand.prepend(logo);
+  });
+}
 
   // Render diagonal arrows as vector icons, never as platform-dependent emoji.
   function directionArrow() {

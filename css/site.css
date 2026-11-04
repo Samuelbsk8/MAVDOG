@@ -279,7 +279,6 @@ dialog .cancel-btn,dialog .deleteTestimonial_cancel { background: transparent !i
   .approach-visual { height: 590px; }
   .approach-copy h2 { font-size: 44px; }
   .work-inner { grid-template-columns: 1fr; gap: 38px; }
-  .work-intro h2 br { display: none; }
   .work-intro > p:not(.eyebrow) { max-width: 500px; }
   .work-intro .light-link { display: inline-block; margin: 0 0 0 22px; }
   .questions-section { gap: 40px; }
@@ -331,13 +330,11 @@ dialog .cancel-btn,dialog .deleteTestimonial_cancel { background: transparent !i
   .approach-section { grid-template-columns: 1fr; padding-block: 25px 65px; gap: 35px; }
   .approach-visual { height: 470px; }
   .approach-copy h2 { font-size: 49px; }
-  .approach-copy h2 br:nth-child(2) { display: none; }
   .approach-copy .large-copy { max-width: 440px; }
   .work-inner { padding-block: 60px; }
   .work-intro h2 { font-size: 42px; }
   #slideshow { height: 390px; }
   .questions-section { grid-template-columns: 1fr; gap: 32px; padding-block: 60px; }
-  .questions-section h2 br { display: none; }
   .questions-section h2 { font-size: 42px; }
   .contact-section { padding-block: 55px 65px; gap: 35px; }
   .contact-copy { display: block; }
