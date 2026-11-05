@@ -1,7 +1,7 @@
 // Public browser settings. Never add passwords, private keys, or permanent admin tokens.
 window.MAVDOG_CONFIG = {
   phone: '', // Your real business number, e.g. +18035551234.
-  email: '', // Your real business email.
+  email: 'mavdogk9@gmail.com', // Your real business email.
   web3formsAccessKey: "1a24ce0a-df98-4e10-809b-a08db134715a",
   apiUrl: 'https://mavdog-server-testimonials.onrender.com',
   // Review writes require a backend. Admin mode is NOT authentication.
