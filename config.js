@@ -2,7 +2,7 @@
 window.MAVDOG_CONFIG = {
   phone: '', // Your real business number, e.g. +18035551234.
   email: '', // Your real business email.
-  web3formsAccessKey: "d9e1aa0b-4c78-4f91-b4e7-e1ff65c143bd",
+  web3formsAccessKey: "1a24ce0a-df98-4e10-809b-a08db134715a",
   apiUrl: 'https://mavdog-server-testimonials.onrender.com',
   // Review writes require a backend. Admin mode is NOT authentication.
   enableReviewSubmissions: false,
